@@ -1,0 +1,8 @@
+
+target/
+dbt_packages/
+logs/
+env/
+.vscode/
+.DS_Store
+raw/
