@@ -1,0 +1,11 @@
+version: 1
+
+sources:
+  - name: fetch_challenge
+    database: postgres
+    schema: yiru
+    tables:
+      - name: brands
+      - name: users
+      - name: receipts
+      - name: receipt_items
