@@ -52,17 +52,36 @@ for receipt in receipts:
             item_dict = {
                 "receipt_id": receipt_dict["_id"],  # Foreign Key
                 "barcode": item.get("barcode"),
-                "competitive_product": item.get("competitiveProduct"),
+                "description": item.get("description"),
                 "final_price": float(item["finalPrice"]) if item.get("finalPrice") else None,
                 "item_price": float(item["itemPrice"]) if item.get("itemPrice") else None,
+                "needs_fetch_review": item.get("needsFetchReview"),
                 "partner_item_id": item.get("partnerItemId"),
+                "prevent_target_gap_points": item.get("preventTargetGapPoints"),
                 "quantity_purchased": item.get("quantityPurchased"),
-                "rewards_group": item.get("rewardsGroup"),
                 "user_flagged_barcode": item.get("userFlaggedBarcode"),
-                "user_flagged_description": item.get("userFlaggedDescription"),
                 "user_flagged_new_item": item.get("userFlaggedNewItem"),
                 "user_flagged_price": float(item["userFlaggedPrice"]) if item.get("userFlaggedPrice") else None,
                 "user_flagged_quantity": item.get("userFlaggedQuantity"),
+                "points_earned": float(item["pointsEarned"]) if item.get("pointsEarned") else None,
+                "points_payer_id": item.get("pointsPayerId"),
+                "rewards_group": item.get("rewardsGroup"),
+                "rewards_product_partner_id": item.get("rewardsProductPartnerId"),
+                "target_price": float(item["targetPrice"]) if item.get("targetPrice") else None,
+                "competitive_product": item.get("competitiveProduct"),
+                "discounted_item_price": float(item["discountedItemPrice"]) if item.get("discountedItemPrice") else None,
+                "original_receipt_item_text": item.get("originalReceiptItemText"),
+                "price_after_coupon": float(item["priceAfterCoupon"]) if item.get("priceAfterCoupon") else None,
+                "brand_code": item.get("brandCode"),
+                "points_not_awarded_reason": item.get("pointsNotAwardedReason"),
+                "needs_fetch_review_reason": item.get("needsFetchReviewReason"),
+                "user_flagged_description": item.get("userFlaggedDescription"),
+                "original_meta_brite_barcode": item.get("originalMetaBriteBarcode"),
+                "deleted": item.get("deleted"),
+                "original_meta_brite_description": item.get("originalMetaBriteDescription"),
+                "competitor_rewards_group": item.get("competitorRewardsGroup"),
+                "item_number": item.get("itemNumber"),
+                "original_meta_brite_quantity_purchased": item.get("originalMetaBriteQuantityPurchased"),                
             }
             items_list.append(item_dict)
 
@@ -107,6 +126,7 @@ engine = sa.create_engine("postgresql://{user}:{password}@localhost:5432/{databa
 
 # Load to SQL
 df_receipts.to_sql("receipts", engine, schema='yiru', if_exists="replace", index=False)
-df_items.to_sql("receipt_items", engine, schema='yiru', if_exists="replace", index=False)
+df_items.index += 1
+df_items.to_sql("receipt_items", engine, schema='yiru', if_exists="replace", index=True, index_label="_id")
 df_brands.to_sql("brands", engine, schema='yiru', if_exists="replace", index=False)
 df_users.to_sql("users", engine, schema='yiru', if_exists="replace", index=False)
