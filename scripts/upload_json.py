@@ -20,7 +20,7 @@ def convert_timestamp(obj):
     """Converts MongoDB-style '$date' timestamps into pandas datetime."""
     return pd.to_datetime(obj["$date"], unit='ms') if isinstance(obj, dict) and "$date" in obj else obj
 
-# Process receipts data
+# initialize lists to store data
 receipts_list = []
 items_list = []
 brands_list = []
