@@ -205,7 +205,6 @@ having count(barcode) > 1
 Then I checked some examples:
 ```sql
 select barcode, brand_code, "name"  from brands as b 
-select barcode, brand_code, "name"  from brands as b 
 where barcode in 
 ('511111204923','511111004790')
 order by barcode
