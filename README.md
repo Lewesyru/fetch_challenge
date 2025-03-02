@@ -137,7 +137,7 @@ order by
 	transaction_count desc
 limit 5;
 ```
-The model is located at: [models/marts/fct_fecth__most_transactions_brands.sql](models/marts/fct_fetch__most_transactions_brands.sql). The output is:
+The model is located at: [models/marts/fct_fetch__most_transactions_brands.sql](models/marts/fct_fetch__most_transactions_brands.sql). The output is:
 |brand|transaction_count|
 |-----|-----------------|
 |KNORR|17|
