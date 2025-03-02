@@ -137,7 +137,7 @@ order by
 	transaction_count desc
 limit 5;
 ```
-The model is located at: [models/marts/fct_fecth__most_transactions_brands.sql](models/marts/fct_fecth__most_transactions_brands.sql). The output is:
+The model is located at: [models/marts/fct_fecth__most_transactions_brands.sql](models/marts/fct_fetch__most_transactions_brands.sql). The output is:
 |brand|transaction_count|
 |-----|-----------------|
 |KNORR|17|
@@ -204,7 +204,7 @@ having count(barcode) > 1
 ```
 Then I checked some examples:
 ```sql
-select barcode, brand_code, "name"  from yiru.brands as b 
+select barcode, brand_code, "name"  from brands as b 
 where barcode in 
 ('511111204923','511111004790')
 order by barcode
