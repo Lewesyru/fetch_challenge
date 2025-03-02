@@ -8,7 +8,7 @@ Feb 28, 2025
 
 ### Part 1
 
-I opened the JSON files and quickly examined the files - the original JSON files are seemingly in MongoDB JSON export format - it has a `"$oid"` structure in the id field, and all the objects are not constructed in an array (missing opening and ending `[]` and comma between objects). 
+I opened the JSON files and quickly examined the files - the original JSON files are seemingly in MongoDB JSON export format - it has a `"$oid"` structure in the id field, and all the objects are not constructed in an array (missing opening and ending `[]` as well as missing comma between objects). 
 
 I reformatted the file to standard JSON format (an array of objects), then I noticed that the `receipts.json` file has a nested structure in the column `rewardsReceiptItemList`. Therefore, I created a Python script to flatten out the nested structure and upload the data to my local Postgres database for data modeling, located in `scripts/upload_json.py`. All SQL queries in this exercise are in **Postgres** style.
 
