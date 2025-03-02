@@ -18,7 +18,7 @@ The relational data model ER diagram is shown below:
 ---
 
 ### Part 2
-For this part, I answered all the questions for my own practise. I set up a dbt_core & Postgres environment in my local and run my testing queries on Postgresql via DBeaver.
+For this part, I answered all the questions for my own practice. I set up a dbt_core & Postgres environment in my local and ran my testing queries on Postgresql via DBeaver.
 
 #### 1. What are the top 5 brands by receipts scanned for most recent month?
 The model is at [models/marts/fct_fetch__most_freq_brands_last_month.sql](models/marts/fct_fetch__most_freq_brands_last_month.sql). The modeling logic is to append the brand name to the receipt_items first, then filter the items where the receipt_id fall within the last_month range.
@@ -43,11 +43,11 @@ The model is at [models/marts/fct_fetch__most_freq_brands_prev_month.sql](models
 |Doritos|DORITOS|77|
 |Kraft|KRAFT|60|
 
-The results from the previous question don't make too much sense. Therefore, the comparison of them two is pointless.
+The results from the previous question don't make too much sense. Therefore, the comparison of the two is pointless.
 
 
 #### 3. When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
-We just need to get the average of `total_spent` out of `receipts` table, then group by the `rewardsReceiptStatus`. The `AVG()` function will automatically calulate the average of each group. The results of this question can be easily pull out by this query:
+We just need to get the average of `total_spent` out of `receipts` table, then group by the `rewardsReceiptStatus`. The `AVG()` function will automatically calculate the average of each group. The results of this question can be easily pulled out by this query:
 ```sql
 select
 	rewards_receipt_status,
@@ -91,7 +91,7 @@ The average spend of **Finished (Accepted) is greater** than Rejected. Model loc
 
 
 #### 5. Which brand has the most spend among users who were created within the past 6 months?
-For this question, we just need to filter the receipts through the users criteria, then sum up the spent by brands. The final model is at: [models/marts/fct_fetch__most_spend_brands.sql](models/marts/fct_fetch__most_spend_brands.sql). I ordered by the sum decending and limit 5, for better viewing purpose. The output is:
+For this question, we just need to filter the receipts through the criteria for users data, then sum up the spent by brands. The final model is at: [models/marts/fct_fetch__most_spend_brands.sql](models/marts/fct_fetch__most_spend_brands.sql). I ordered by the sum descending and limit 5, for better viewing purposes. The output is:
 |brand|spent_sum|
 |-----|---------|
 |Cracker Barrel Cheese|703.50|
@@ -100,11 +100,11 @@ For this question, we just need to filter the receipts through the users criteri
 |Doritos|323.64|
 |Pepsi|250.39|
 
-Therefore, the **Cracker Barrel Cheese** has the most spend amonut at **703.50**, among users who were created within the past 6 months.
+Therefore, the **Cracker Barrel Cheese** has the most spending amount at **703.50**, among users who were created within the past 6 months.
 
 
 #### 6. Which brand has the most transactions among users who were created within the past 6 months?
-If we are only consider how many times that the brand appears in the receipt_items, among users who were created within the past 6 months, the query should be:
+If we only consider how many times the brand appears in the receipt_items, among users who were created within the past 6 months, the query should be:
 ```sql
 select
 	"name" as brand,
@@ -151,12 +151,12 @@ KNORR has appeared in 17 transactions among users who were created within the pa
 ---
 
 ### Part 3
-When exploring and working with the provided dataset, I do noticed several data quality issue:
+When exploring and working with the provided dataset, I noticed several data quality issues:
 
 1. MongoDB-style JSON.
-- The goal is to map the data to a structured relational data model. But the Mongo-style JSON will not be properly parsed by Python `json` package or `pandas.read_json` function.
+- The goal is to map the data to a structured relational data model. But the Mongo-style JSON will not be properly parsed by the Python `json` package or `pandas.read_json` function.
 
-2. Extremely long list of `rewardsReceiptItemList` for several objects. This could potentially cause slowlyness in data preprocessing.
+2. Extremely long list of `rewardsReceiptItemList` for several objects. This could potentially cause slowness in data preprocessing.
 
 3. Duplicate on `users` table.
 - When exploring the raw data by simple select, I found out that the `users._id` is not unique. 
