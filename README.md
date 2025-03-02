@@ -4,6 +4,8 @@ Yi Ru
 
 Feb 28, 2025
 
+---
+
 ### Part 1
 
 I opened the JSON files and quickly examined the files - the original JSON files are seemingly in MongoDB JSON export format - it has a `"$oid"` structure in the id field, and all the objects are not constructed in an array (missing opening and ending `[]` and comma between objects). 
@@ -146,6 +148,7 @@ The model is located at: [models/marts/fct_fecth__most_transactions_brands.sql](
 
 KNORR has appeared in 17 transactions among users who were created within the past 6 months.
 
+---
 
 ### Part 3
 When exploring and working with the provided dataset, I do noticed several data quality issue:
@@ -213,6 +216,7 @@ order by barcode
 |511111204923|CHESTERS|CHESTER'S|
 |511111204923|0987654321|Brand1|
 
+---
 
 ### Part 4
 #### Subject: Findings & Data Quality Issues in Fetch Rewards Data
