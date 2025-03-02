@@ -252,6 +252,6 @@ Yi Ru
 
 
 ### At last
-I know this data challenge doesn't require me to finish all the questions. However, this is the first time that I am working with DBT, and I see this as a good practice for me. No matter what my application result will be. I know this report is waaaaaay too long to review, my apologies! Thanks again for considering my application for the Analytic Engineer position at Fetch Rewards!
+I know this data challenge doesn't require me to finish all the questions. However, this is the first time that I am working with DBT, and I see this as a good practice for me. I know this report is waaaaaay too long to review, my apologies! Thanks again for considering my application for the Analytic Engineer position at Fetch Rewards!
 
 -Yi
