@@ -176,6 +176,7 @@ I got something like this:
 |54943462e4b07e684157a532|20|
 |5ff5d15aeb7c7d12096d91a2|18|
 
+This type of issue can also be detected easily via a dbt test on the primary key. Just add a `unique` and `not_null` test on the `_id` column.
 
 4. In question 1, some reiceipt_items don't have brand_code, especially the transactions been made in the last month. There might be issues in the upstream services that collect these data.
 ```sql
